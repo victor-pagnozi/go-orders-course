@@ -21,6 +21,8 @@ func main() {
 		panic(err)
 	}
 
+	defer db.Close() // Espera tudo rodar, para dps fechar a conexão
+
 	orderRepository := database.NewOrderRepository(db)
 
 	uc := usecase.NewCalculateFinalPrice(orderRepository)
